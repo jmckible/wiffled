@@ -1,0 +1,50 @@
+<table>
+  <tr>
+    <th>&nbsp;</th>
+    <th>AB</th>
+    <th>H</th>
+    <th>D</th>
+    <th>T</th>
+    <th>HR</th>
+    <th>BB</th>
+    <th>SO</th>
+    <th>RBI</th>
+    <th>OBP</th>
+    <th>SLG</th>
+    <th>AVG</th>
+  </tr>
+  
+  <%- for player in @team.players -%>
+    <%- if player.starts.size > 0 -%>
+      <tr>
+        <td><%= link_to h(player.name), player %></td>
+        <td><%= player.at_bats %></td>
+        <td><%= player.hits %></td>
+        <td><%= player.doubles %></td>
+        <td><%= player.triples %></td>
+        <td><%= player.home_runs %></td>
+        <td><%= player.walks %></td>
+        <td><%= player.strike_outs %></td>
+        <td><%= player.rbis %></td>
+        <td><%=f player.obp %></td>
+        <td><%=f player.slugging %></td>
+        <td><%=f player.average %></td>
+      </tr>
+    <%- end -%>
+  <%- end -%>
+  
+  <tr class="total">
+    <td>Total</td>
+    <td><%= @team.at_bats %></td>
+    <td><%= @team.hits %></td>
+    <td><%= @team.doubles %></td>
+    <td><%= @team.triples %></td>
+    <td><%= @team.home_runs %></td>
+    <td><%= @team.walks %></td>
+    <td><%= @team.strike_outs %></td>
+    <td><%= @team.rbis %></td>
+    <td><%=f @team.obp %></td>
+    <td><%=f @team.slugging %></td>
+    <td><%=f @team.average %></td>
+  </tr>
+</table>

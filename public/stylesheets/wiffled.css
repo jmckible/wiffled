@@ -1,0 +1,335 @@
+a { color: #036;; text-decoration: none;}
+a:hover {  text-decoration: underline; }
+a img { border: 0;}
+
+#Announcement { clear: both;}
+
+body {
+  color: #333;
+  font-family: helvetica, verdana, sans-serif;
+  font-size: small;
+  margin: 0;
+  padding: 0;
+  background-color: #369;
+}
+/* adjustment for IE5 */
+body {
+	font-size: x-small; /* IE5 Win */
+  voice-family: "\"}\""; 
+  voice-family: inherit;
+  font-size: small;
+}
+html>body { /* be nice to Opera */
+	font-size: small;
+}
+
+.clearfix:after {
+  content: "."; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;
+}
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+/* End hide from IE-mac */
+
+#Comments{
+  margin-left: 500px;
+}
+#Comments #Avatar { max-width: 350px; }
+
+.comment{
+  margin-bottom: 1em;
+  border-bottom: 1px solid #ccc;
+  min-height: 180px;
+}
+.comment .avatar {
+  float: left;
+  margin-right: 1em;
+  padding-bottom: 1em;
+}
+
+#Content {
+	margin: 0 auto;
+  padding: 2em 2em;
+	width: 848px; 
+	background: #fff url(/images/black_gradient.png) repeat-x top;
+}
+
+#Copy{
+  float: left;
+  width: 500px;
+  border-right: 1px solid #ccc;
+  padding-right: 30px;
+}
+
+#Header {
+  background-image: url(/images/cloud_tile.png);
+	height: 84px;
+}
+
+h1{
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 1.75em;
+  line-height: 1.75em;
+}
+h2{
+  margin: 1.5em 0 0.5em 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 1.5em;
+  border-bottom: 1px solid #ddd;
+}
+h3{
+  margin: 0 0 1em 0;
+  padding: 0;
+  font-weight:normal;
+  font-size: 125%;
+}
+
+.highlight { background-color: #ffb; }
+
+img.pad { margin: 1em 0;}
+
+#Info{
+  float: left;
+  width: 450px;
+  border-right: 1px solid #ccc;
+  padding-right: 30px;
+}
+#Info #TeamLogo{
+  float: right;
+  text-align: right;
+}
+
+input.single { width: 2em;}
+input[type=text] { border: 1px solid #ddd; }
+input[type=password] { border: 1px solid #ddd; }
+input.title { font-size: 1.75em;}
+
+#Flash{ color: #c00; }
+
+.fixed_width { width: 856px; margin: 0 auto;}
+
+#Footer {
+	margin: 0 auto 1.5em auto;
+  padding: 2em 2em 0.5em 2em;
+  text-align: center;
+	width: 848px; 
+	background: #fff;
+	color: #999;
+}
+#Footer a { color: #666;}
+
+.leaders {
+  clear: both;
+  margin-bottom: 2em;
+}
+.leaders .profile{
+  float: left;
+  width: 33%;
+}
+.leaders .profile .picture{
+  height: 70px;
+}
+.leaders .profile .picture img {
+  max-height: 70px;
+}
+.leaders .profile h3{
+  margin-top: 1em;
+}
+
+#LoginBox{
+  float:right;
+  text-align: right;
+  margin-top: 20px;
+	color: #000;
+}
+#Logo{
+	width: 400px;
+	float: left;
+}
+.logo {
+  float: right;
+  margin-left: 2em;
+  width: 200px;
+}
+
+.message {
+  padding-bottom: 1em;
+  margin-bottom: 2em;
+  border-bottom: 1px solid #ddd;
+}
+.message .avatar {
+  float: left;
+  margin: 0.2em 1em 0.3em 0;
+}
+
+#Navigation{
+  margin: 0 auto;
+  padding: 0;
+  height: 2em;
+  width: 900px;
+	background: #036;
+}
+#Navigation li{
+  float: left;
+  list-style-type: none;
+  list-style-image: none;
+  margin: 0 10px 0 0;
+  line-height: 2em;
+  padding: 0;
+}
+#Navigation li.first { margin-left: 2em; }
+#Navigation li a {display:block; padding: 0 0.25em; color: #fff; }
+#Navigation li a:hover{background-color: #fff; text-decoration: none; color: #036; }
+
+.no_picture{
+  width:100px; 
+  height: 71px; 
+  border: 1px solid #ccc; 
+  margin-right: 1em; 
+}
+
+ol { margin: 0 0 0 1.5em; padding: 0;}
+
+p {
+  line-height: 1.5em;
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+
+p.meta{ color: #666; margin-bottom: 0.5em; }
+
+.picture_list{
+  float: left;
+  margin: 0 4em 3em 0;
+}
+
+.red { color: #c00;}
+
+#Sidebar{
+  margin-left: 550px;
+}
+
+.strong { font-weight: bold;}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	vertical-align: top;
+}
+table.standings{
+  width: 50%;
+  margin-bottom: 2em;
+}
+table.game_results{
+  margin-bottom: 4em;
+}
+table.stats {
+  width: 80%;
+  margin: 1em 0;
+}
+table.mini_stats {
+  width: 100px;
+}
+table.mini_stats td{
+  border: 0;
+  padding: 0 0.25em;
+  color: #666;
+}
+table.mini_stats td.first{
+  text-align: right;
+  width: 1em;
+}
+table tr.total{
+  font-weight: bold;
+}
+table tr th{
+	text-align: left;
+	font-weight: normal;
+	background-color: #eee;
+	border: 1px solid #ccc;
+	padding: 0.25em;
+}
+table tr td{
+	border: 1px solid #ccc;
+	margin: 0;
+	padding: 0.25em;
+}
+table tr td.title{
+  font-size: 1.2em;
+}
+table tr td.author{
+	width: 10em;
+	font-size: 90%;
+}
+table tr td.last_reply {
+	width: 18em;
+	font-size: 90%;
+}
+
+table.thread {
+	margin: 2em 0;
+	width: 52em;
+}
+table.thread tr td.attribution{
+	width: 12em;
+	vertical-align: top;
+	padding: 0.5em;
+	background-color: #eee;
+}
+table.thread tr td.attribution p { line-height: 1em; margin: 0;}
+table.thread tr td.message{ 
+  vertical-align: top;
+  padding: 0.5em 1em;
+  width: 40em;
+}
+
+textarea{
+  border: 1px solid #ddd;
+  width: 40em;
+  height: 15em;
+  margin: 0 0 2em 0;
+  font-family: helvetica, verdana, sans-serif;
+  font-size: 95%;
+  line-height: 1.5em;
+}
+
+ul{
+  margin: 1em 0 2em 0;
+  padding: 0 0 0 2em;
+}
+
+ul li{
+  margin: 0 0 1em 0;
+  list-style-image: url(/images/arrow.gif);
+  vertical-align: baseline;
+  line-height: 1.5em;
+}
+
+ul.clean{ padding: 0; }
+ul.clean li{
+  list-style-image: none;
+  list-style-type: none;
+}
+
+ul.standard{
+  margin: 0;
+  padding: 0;
+}
+ul.standard li{
+  list-style-image: none;
+  list-style-type: disc;
+  margin: 0 0 0 1em;
+  padding: 0;
+  line-height: 1em;
+}
+
+.will_paginate {
+  margin-top: 1em;
+  font-size: 1.25em;
+}

@@ -1,0 +1,45 @@
+<%- @page_title = @team.name -%>
+<div id="Copy">
+  <%= image_tag(@team.logo.public_filename, :class=>:logo) unless @team.logo.nil? %>
+
+	<h1><%=h @team.name %></h1>
+	<%= content_tag(:h3, h(@team.division.name)+' Division') unless @team.division.nil? %>
+
+	<h3>Record: <%= @team.record %></h3>
+
+	<%= simple_format @team.bio %>
+	
+	<p>Owner: <%= link_to h(@team.owner.name), player_path(@team.owner) %></p>
+	
+	<%- if is_owner? -%>
+	  <p><%= link_to 'Edit Bio', edit_team_path(@team) %><br>
+       <%= link_to 'Upload Logo', new_logo_path %></p>
+	<%- end -%>
+	<%- if is_commissioner? -%>
+	  <p><%= link_to 'Edit', edit_team_path(@team) %></p>
+	<%- end -%>
+	
+	<%- if @team.games.size > 0 -%>
+	  <h2 style="clear:both">Games</h2>
+	  <%= render :partial=>'games' %>
+	<%- end -%>
+	
+	<%- if @team.starts.size > 0 -%>
+	  <h2>Hitting Stats</h2>
+    <%= render :partial=>'hitting' %>
+	<%- end -%>
+	
+	<%- if @team.appearances.size > 0 -%>
+	  <h2>Pitching Stats</h2>
+	  <%= render :partial=>'pitching' %>
+	<%- end -%>
+</div>
+
+<div id="Sidebar">
+	<h2>Roster</h2>
+	<ul class="clean">
+	  <% for player in @team.players %>
+	    <li><%= link_to h(player.name), player_path(player) %></li>
+	  <% end -%>
+	</ul>
+</div>

@@ -1,0 +1,6 @@
+taunt:
+  id: 1
+  player_id: 4
+  sender_id: 3
+  body: you stink
+  created_at: <%= Time.now.to_s :db %>

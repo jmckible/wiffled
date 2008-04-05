@@ -1,0 +1,10 @@
+<h1>Editing Appearance for Game #<%= @appearance.game.id %> <%= @appearance.game.date.strftime('%B %e, %Y') %> <%= @appearance.game %></h1>
+
+<%= error_messages_for :appearance %>
+
+<% form_for(@appearance) do |f| %>
+  <%= render :partial=>'form', :object=>f %>
+  <p><%= f.submit "Update" %></p>
+<% end %>
+
+<p><%= link_to 'Delete', @appearance, :method=>:delete, :confirm=>'Are you sure?' %> | <%= link_to 'Back', season_game_path(@season, @game) %></p>

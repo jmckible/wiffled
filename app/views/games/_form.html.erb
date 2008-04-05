@@ -1,0 +1,39 @@
+<p>Date<br/><%= form.date_select :date %></p>
+
+<table class="stats">
+  <tr>
+    <th>&nbsp;</th>
+    <%- 1.upto(5) do |i| -%>
+      <th><%= i %></th>
+    <%- end -%>
+  </tr>
+  
+  <tr>
+    <td><%= form.collection_select :away_team_id, @league.teams, :id, :name %></td>
+    <%- fields_for :away_line_score, (@game.away_line_score || LineScore.new) do |line_score| -%>
+      <td><%= line_score.text_field :one,   :class=>:single %></td>
+      <td><%= line_score.text_field :two,   :class=>:single %></td>
+      <td><%= line_score.text_field :three, :class=>:single %></td>
+      <td><%= line_score.text_field :four,  :class=>:single %></td>
+      <td><%= line_score.text_field :five , :class=>:single%></td>
+    <%- end -%>
+  </tr>
+  
+  <tr>
+    <td><%= form.collection_select :home_team_id, @league.teams, :id, :name %></td>
+    <%- fields_for :home_line_score, (@game.home_line_score || LineScore.new) do |line_score| -%>
+      <td><%= line_score.text_field :one,   :class=>:single %></td>
+      <td><%= line_score.text_field :two,   :class=>:single %></td>
+      <td><%= line_score.text_field :three, :class=>:single %></td>
+      <td><%= line_score.text_field :four,  :class=>:single %></td>
+      <td><%= line_score.text_field :five , :class=>:single%></td>
+    <%- end -%>
+  </tr>
+  
+</table>
+
+<p>Winning Pitcher<br/><%= form.collection_select :winning_pitcher_id, @league.players, :id, :name, :include_blank=>true %></p>
+
+<p>Losing Pitcher<br/><%= form.collection_select :losing_pitcher_id, @league.players, :id, :name, :include_blank=>true %></p>
+
+<p>Save<br/><%= form.collection_select :save_pitcher_id, @league.players, :id, :name, :include_blank=>true %></p>

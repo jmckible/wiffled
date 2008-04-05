@@ -1,0 +1,18 @@
+<div class="message clearfix">
+  
+  <h3><%=h message.player.name %></h3>
+  <p class="meta">
+    <%= time_ago_in_words message.created_at %> ago
+    <% if logged_in? && current_player == message.player -%>
+      | <%= link_to 'Edit', edit_message_path(message) %>
+    <% end -%>
+  </p>
+  
+  <% unless message.player.avatar.nil? %>
+    <div class="avatar">
+      <%= link_to image_tag(message.player.avatar.public_filename(:thumb)), message.player %>
+    </div>
+  <% end -%>
+  
+  <%= message.body %>
+</div>

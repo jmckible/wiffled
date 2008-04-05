@@ -1,0 +1,29 @@
+<table class="mini_stats">
+  <%- if stats.wins > 0 -%>
+    <tr>
+      <td class="first"><%= stats.wins %></td>
+      <td><%= stats.wins > 1 ? 'Wins' : 'Win' %></td>
+    </tr>
+  <%- end -%>
+  
+  <%- if stats.rbis > 0 -%>
+   <tr>
+     <td class="first"><%= stats.rbis %></td>
+     <td>RBI</td>
+   </tr>
+  <%- end -%>
+  
+  <%- if stats.home_runs > 0 -%>
+    <tr>
+      <td class="first"><%= stats.home_runs %></td>
+      <td>HR</td>
+    </tr>
+  <%- end -%>
+  
+  <%- if stats.average > 0 -%>
+    <tr>
+      <td class="first"><%=f stats.average %></td>
+      <td>AVG</td>
+    </tr>
+  <%- end -%>
+</table>

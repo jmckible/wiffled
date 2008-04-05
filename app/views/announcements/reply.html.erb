@@ -1,0 +1,18 @@
+<div id="Copy">
+  <h1><%=h @announcement.title %></h1>
+
+  <%= error_messages_for :message %>
+  
+  <% form_for :announcement, :url=>post_announcement_path do |f| %>
+    <% fields_for :messages do |message| %>
+      <%= message.text_area :body%><br/>
+    <% end %>
+    <p><%= submit_tag 'Reply' %></p>
+  <% end %>
+  
+  <p><%= link_to 'Back', announcement_path(@announcement) %></p>
+</div>
+
+<div id="Sidebar">
+  <%= render :partial=>'welcome/markup' %>
+</div>

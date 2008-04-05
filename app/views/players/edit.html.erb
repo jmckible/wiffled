@@ -1,0 +1,16 @@
+<% @page_title = 'Edit Info' %>
+<h1>Edit My Info</h1>
+<%= error_messages_for :player %>
+<% form_for :player, :url=>player_path(@player), :html=>{:method=>:put} do |f| %>
+  <%= render :partial=>'form', :object=>f %>
+  <p><%= submit_tag 'Update' %></p>
+<% end -%>
+
+<p><%= link_to 'Back', player_path(@player) %></p>
+
+<h1>Change Password</h1>
+<% form_for :player, :url=>player_path(@player), :html=>{:method=>:put} do |f| %>
+  <p>New Password<br/><%= f.password_field :password %></p>
+  <p>Confirm New Password<br/><%= f.password_field :password_confirmation %></p>
+  <p><%= submit_tag 'Change Password' %></p>
+<% end -%>

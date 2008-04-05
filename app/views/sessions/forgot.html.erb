@@ -1,0 +1,10 @@
+<%- @page_title = 'Reset Password' -%>
+
+<h1>Forgot Your Password?</h1>
+
+<p>Enter your email address and a new password will be sent to you.</p>
+
+<% form_tag request_reset_path do %>
+  <p>Email<br/><%= text_field_tag :email %></p>
+  <p><%= submit_tag 'Reset Password' %></p>
+<% end %>

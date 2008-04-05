@@ -1,0 +1,6 @@
+<%= @player.name %>
+<%= @player.email %>
+<% if @player.prospective_owner? -%>
+  Prospective Owner
+<% end -%>
+<%= "http://wiffled.com/players/#{@player.id}" %>

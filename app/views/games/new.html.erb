@@ -1,0 +1,10 @@
+<h1>New Game</h1>
+
+<%= error_messages_for :game %>
+
+<% form_for :game, :url=>season_games_path(@season) do |f| %>
+  <%= render :partial=>'form', :object=>f %>
+  <p><%= f.submit "Create" %></p>
+<% end %>
+
+<p><%= link_to 'Back', season_games_path(@season) %></p>

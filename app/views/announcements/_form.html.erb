@@ -1,0 +1,5 @@
+<%= form.text_field :title %>
+
+<% fields_for :message do |message| %>
+  <%= message.text_area :body %><br/>
+<% end %>

@@ -1,0 +1,9 @@
+<h1>Seasons</h1>
+
+<p><%= link_to 'New season', new_season_path %></p>
+
+<ul>
+<% for season in @seasons %>
+  <li><%= link_to season.name, season %></li>
+<% end %>
+</ul>

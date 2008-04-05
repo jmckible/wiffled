@@ -1,0 +1,24 @@
+<%- @page_title = 'Create New Thread' -%>
+<div id="Copy">
+  <h1>Create a New Thread</h1>
+
+  <%= error_messages_for :league_topic %>
+  <%= error_messages_for :message %>
+
+  <% tagged_form_for(:league_topic, :url => league_topics_path) do |f| %>
+    <%= f.text_field :title, :class=>:title %>
+
+  	<% fields_for :message do |message| %>
+  	  <p>Body<br/>
+  	  <%= message.text_area :body %></p>
+  	<% end %>
+
+    <p><%= submit_tag "Create" %></p>
+  <% end %>
+
+  <p><%= link_to 'Back', league_topics_path %></p>
+</div>
+
+<div id="Sidebar">
+  <%= render :partial=>'welcome/markup' %>
+</div>

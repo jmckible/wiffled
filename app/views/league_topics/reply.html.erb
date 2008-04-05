@@ -1,0 +1,21 @@
+<%- @page_title = "Reply to #{h @league_topic.title}" -%>
+<div id="Copy">
+  <h1><%=h @league_topic.title %></h1>
+
+  <%= @league_topic.messages.first.body %>
+
+  <%= error_messages_for :message %>
+  
+  <% form_for :league_topic, :url=>post_league_topic_path do |f| %>
+    <% fields_for :messages do |message| %>
+      <%= message.text_area :body%><br/>
+    <% end %>
+    <p><%= submit_tag 'Reply' %></p>
+  <% end %>
+  
+  <p><%= link_to 'Back', league_topic_path(@league_topic) %></p>
+</div>
+
+<div id="Sidebar">
+  <%= render :partial=>'welcome/markup' %>
+</div>

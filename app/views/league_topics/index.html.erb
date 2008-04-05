@@ -1,0 +1,31 @@
+<%- @page_title = 'General Discussion' -%>
+<%- @rss = 'http://feeds.feedburner.com/WiffledForum' -%>
+
+<h1>General Discussion</h1>
+
+<p><%= link_to 'New Thread', new_league_topic_path %></p>
+
+<table>
+	<tr>
+		<th></th>
+		<th>Author</th>
+		<th>Last Reply</th>
+	</tr>
+	<%- for @topic in @league_topics -%>
+		<tr>
+			<td class="title">
+			  <%- if updated_league_topic? -%>
+			    <strong><%= link_to h(@topic.title), @topic %></strong>
+			  <%- else -%>
+			    <%= link_to h(@topic.title), @topic %>
+			  <%- end -%>
+			</td>
+			<td class="author"><%=h @topic.player.name %></td>
+			<td class="last_reply"><%= time_ago_in_words @topic.replied_at %> ago by <%=h @topic.last_replier.name %></td>
+		</tr>
+	<%- end -%>
+</table>
+
+<div class="will_paginate">
+  <%= will_paginate @league_topics %>
+</div>

@@ -1,0 +1,10 @@
+<h1>Edit Division</h1>
+
+<%= error_messages_for :division %>
+
+<% form_for(@division) do |f| %>
+  <%= render :partial=>'form', :object=>f %>
+  <p><%= f.submit "Update" %></p>
+<% end %>
+
+<p><%= link_to 'Show', @division %> | <%= link_to 'Back', divisions_path %></p>

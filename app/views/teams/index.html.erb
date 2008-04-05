@@ -1,0 +1,44 @@
+<%- @page_title = 'Teams' -%>
+
+<%- for division in @league.divisions -%>
+  <%- if division.teams.size > 0 -%>
+    <div style="clear:both;">
+      <h1><%=h division.name %> Division</h1>
+
+      <% for group in division.teams.in_groups_of(4) -%>
+        <div style="clear:both">
+        <%- for team in group.compact -%>
+          <span class="picture_list">
+            <h3><%= link_to h(team.name), team_path(team)%></h3>
+          <% if team.logo.nil? %>
+        	  <div class="no_picture">&nbsp;</div>
+          <%- else -%>
+            <div><%= link_to image_tag(team.logo.public_filename(:thumb)), team_path(team) %></div>
+          <% end -%>
+          </span>
+        <%- end -%>
+        </div>
+      <% end -%>
+    </div>
+  <%- end -%>
+<%- end -%>
+
+<%- if @league.teams.without_division.size > 0 -%>
+<div style="clear:both;">
+  <h1>No Division</h1>
+  <% for group in @league.teams.without_division.in_groups_of(4) -%>
+    <div style="clear:both">
+    <%- for team in group.compact -%>
+      <span class="picture_list">
+        <h3><%= link_to h(team.name), team_path(team)%></h3>
+      <% if team.logo.nil? %>
+    	  <div class="no_picture">&nbsp;</div>
+      <%- else -%>
+        <div><%= link_to image_tag(team.logo.public_filename(:thumb)), team_path(team) %></div>
+      <% end -%>
+      </span>
+    <%- end -%>
+    </div>
+  <% end -%>
+</div>
+<%- end -%>

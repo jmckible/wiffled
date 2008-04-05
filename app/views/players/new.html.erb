@@ -1,0 +1,23 @@
+<div id="Left">
+  <%= error_messages_for :player %>
+  <% tagged_form_for :player, :url => players_path, :html=>{:method=>:post} do |f| %>
+    <%= f.text_field :first_name %>
+    <%= f.text_field :last_name %>
+    <%= f.text_field :email %>
+    <%= f.check_box :prospective_owner %>
+    <%= f.password_field :password %>
+    <%= f.password_field :password_confirmation %>
+    <p><%= submit_tag 'Sign up' %></p>
+  <% end -%>
+
+  <p>Already Signed Up? <%= link_to 'Login', login_path %></p>
+</div>
+
+<div id="Right">
+  <h2>Questions?</h2>
+  <ul>
+    <li>By signing up here, you will become a free agent in the league.</li>
+    <li>If you'd like to start your own team, check the 'Prospective Owner' checkbox. Owners will be responsible for fielding a team for every game.  Of course, you also get perks like naming your team.</li>
+    <li>If you'd like to get updates about the league via email, check the 'Send Email' box.  We also have an RSS feed.</li>
+    </ul>
+</div>

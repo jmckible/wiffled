@@ -1,0 +1,14 @@
+<h1>New Contract</h1>
+
+<p>As the owner of <%=h current_player.ownership.name %>, you may offer contracts to any players.</p>
+
+<%= error_messages_for :contract %>
+
+<% form_for(:contract, :url => contracts_path) do |f| %>
+	<%= f.hidden_field :player_id %>
+	<p>Player: <%=h @contract.player.name %> <br/>
+	   Team: <%=h current_player.ownership.name %></p>
+  <p><%= submit_tag "Make Offer" %></p>
+<% end %>
+
+<p><%= link_to 'Back', player_path(@contract.player) %></p>

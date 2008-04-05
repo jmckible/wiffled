@@ -1,0 +1,48 @@
+<%- @page_title = "#{@season.name} Season Games" -%>
+<h1><%= @season.name %> Season Games</h1>
+
+<%- if is_commissioner? -%>
+  <p><%= link_to 'New game', new_season_game_path(@season) %></p>
+<%- end -%>
+
+<%- @games.group_by(&:date).sort.reverse.each do |date, games| -%>
+  <h3><%= date.strftime('%B %e, %Y') %></h3>
+  <table class="game_results">
+    <tr>
+      <th>Away</th>
+      <th>Home</th>
+      <th>Result</th>
+      <th>Winning Pitcher</th>
+      <th>Losing Pitcher</th>
+      <th>Save</th>
+    </tr>
+    
+    <% for game in games.sort %>
+      <tr>
+        <%- if game.winner == game.away_team -%>
+          <td class="strong"><%=h game.away_team.name %></td>
+        <%- else -%>
+          <td><%=h game.away_team.name %></td>
+        <%- end -%>
+        
+        <%- if game.winner == game.home_team -%>
+          <td class="strong"><%=h game.home_team.name %></td>
+        <%- else -%>
+          <td><%=h game.home_team.name %></td>
+        <%- end -%>
+        
+        <%- if game.played? -%>
+          <td><%= link_to h(game), season_game_path(@season, game) %></td>
+          <td><%=h game.winning_pitcher.name_and_record(game.date) unless game.winning_pitcher.nil? %></td>
+          <td><%=h game.losing_pitcher.name_and_record(game.date) unless game.losing_pitcher.nil? %></td>
+          <td><%=h game.save_pitcher.name_and_saves(game.date) unless game.save_pitcher.nil? %></td>
+        <%- else -%>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        <%- end -%>
+    <% end %>
+    
+  </table>
+<%- end -%>

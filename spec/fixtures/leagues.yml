@@ -1,0 +1,9 @@
+nh:
+  id: 1
+  name: NH Wiffle
+  commissioner_id: 3
+
+sandlot:
+  id: 2
+  name: Sandlot
+  commissioner_id: 1

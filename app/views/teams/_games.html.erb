@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Away</th>
+    <th>Home</th>
+    <th>Result</th>
+  </tr>
+  
+<%- for game in @team.games -%>
+  <tr <%= "class=\"highlight\"" if game.winner == @team %>>
+    <td><%= game.date.strftime('%B %e') %></td>
+    <td><%=h game.away_team.name %></td>
+    <td><%=h game.home_team.name %></td>
+    <td><%= link_to h(game), season_game_path(@season, game) %></td>
+  </tr>
+<%- end -%>
+</table>

@@ -1,0 +1,12 @@
+<div id="Copy">
+  <h1><%=h @announcement.title %></h1>
+  <%= render :partial=>'messages/message', :collection=>@announcement.messages %>
+  
+  <%- if logged_in? -%>
+    <p><%= link_to 'Reply', reply_announcement_path(@announcement) %></p>
+  <%- end -%>
+</div>
+
+<div id="Sidebar">
+  <iframe src="http://www.flickr.com/slideShow/index.gne?group_id=437516@N22" frameBorder="0" width="300" height="300" scrolling="no"></iframe>
+</div>

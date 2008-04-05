@@ -1,0 +1,12 @@
+<h1>Editing announcement</h1>
+
+<%= error_messages_for :announcement %>
+
+<% form_for(:announcement, :url => announcement_path(@announcement), :html => { :method => :put }) do |f| %>
+  <p>
+    <%= submit_tag "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', announcement_path(@announcement) %> |
+<%= link_to 'Back', announcements_path %>

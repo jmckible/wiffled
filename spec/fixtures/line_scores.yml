@@ -1,0 +1,32 @@
+mammoth:
+  id: 1
+  one: 1
+  two: 1
+  three: 1
+  four: 1
+  five: 1
+
+wizards:
+  id: 2
+  one: 0
+  two: 0
+  three: 0
+  four: 0
+  five: 0
+
+wow:
+  id: 3
+  one: 5
+  two: 0
+  three: 0
+  four: 0
+  five: 0
+  
+mam:
+  id: 4 
+  one: 0
+  two: 0
+  three: 0
+  four: 0
+  five: 0 
+  

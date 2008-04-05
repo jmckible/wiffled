@@ -1,0 +1,176 @@
+<% @page_title = @player.name -%>
+
+<div id="Info">
+  <%- if !@player.team.nil? && !@player.team.logo.nil?-%>
+    <div id="TeamLogo">
+  		<%= link_to image_tag(@player.team.logo.public_filename(:thumb)), team_path(@player.team) %>
+    </div>
+  <%- end -%>
+  
+  <h1><%=h @player.name%></h1>
+  <%- if is_commissioner? -%>
+    <p><%= mail_to @player.email %></p>
+  <%- end -%>
+  
+  <%- if @player.team.nil? && owns_any_team? -%>
+    <p><%= link_to "Recruit for #{h current_player.ownership.name}", new_contract_path(:player_id=>@player.id) %></p>
+  <%- end -%>
+  
+  <% if is_this_player? -%>
+    <p><%= link_to 'Edit My Info', edit_player_path(@player)%> <br/>
+      <%= link_to 'Upload a new picture', new_avatar_path %>
+			
+			<%- if @player.contracts.undecided.size > 0 -%>
+				<br/>You've been offered contracts by:<br/>
+					<%- for contract in @player.contracts.undecided -%>
+						&nbsp;&nbsp;&nbsp;<%= link_to h(contract.team.name), edit_contract_path(contract) %><br/>
+					<%- end -%>
+			<%- end -%>
+		</p>
+  <% end -%>
+
+  <p>
+    <%= ifh 'Contact', @player.contact %>
+    <%= "<strong>Homepage:</strong> #{link_to h(@player.homepage), @player.homepage}<br/>" unless @player.homepage.blank? %> 
+    <%= ifh 'Hometown', @player.hometown %> 
+    <%= "<strong>Birthday</strong>: #{@player.birthday.strftime('%B %e, %Y')}<br/>" unless @player.birthday.blank? %> 
+  </p>
+
+  <p>
+    <%= ifh 'Bats', @player.bats %> 
+    <%= ifh 'Throws', @player.throws %> 
+    <%= ifh 'Pitches', @player.pitches %>
+
+    <%= simple_format @player.bio %>
+  </p>
+  
+  <%- if @player.starts.size > 0 -%>
+    <h2>Hitting Stats</h2>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>OPP</th>
+        <th>AB</th>
+        <th>H</th>
+        <th>D</th>
+        <th>T</th>
+        <th>HR</th>
+        <th>BB</th>
+        <th>SO</th>
+        <th>RBI</th>
+        <th>OBP</th>
+        <th>SLG</th>
+        <th>AVG</th>
+      </tr>
+      
+      <%- for start in @player.starts -%>
+        <tr>
+          <td><%= link_to start.game.date.strftime('%m/%d'), season_game_path(@season, start.game) %></td>
+          <td><%= link_to h(start.opponent.abbreviation), start.opponent %></td>
+          <td><%= start.at_bats %></td>
+          <td><%= start.hits %></td>
+          <td><%= start.doubles %></td>
+          <td><%= start.triples %></td>
+          <td><%= start.home_runs %></td>
+          <td><%= start.walks %></td>
+          <td><%= start.strike_outs %></td>
+          <td><%= start.rbis %></td>
+          <td><%=f start.obp %></td>
+          <td><%=f start.slugging %></td>
+          <td><%=f start.average %></td>
+        </tr>
+      <%- end -%>
+      
+      <tr class="total">
+        <td colspan="2">Total</td>
+        <td><%= @player.at_bats %></td>
+        <td><%= @player.hits %></td>
+        <td><%= @player.doubles %></td>
+        <td><%= @player.triples %></td>
+        <td><%= @player.home_runs %></td>
+        <td><%= @player.walks %></td>
+        <td><%= @player.strike_outs %></td>
+        <td><%= @player.rbis %></td>
+        <td><%=f @player.obp %></td>
+        <td><%=f @player.slugging %></td>
+        <td><%=f @player.average %></td>
+      </tr>
+    </table>
+  <%- end -%>
+  
+  <%- if @player.appearances.size > 0 -%>
+    <h2>Pitching Stats</h2>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>OPP</th>
+        <th>IP</th>
+        <th>R</th>
+        <th>H</th>
+        <th>BB</th>
+        <th>K</th>
+        <th>HR</th>
+        <th>ERA</th>
+        <th>WHIP</th>
+      </tr>
+      
+      <%- for appearance in @player.appearances -%>
+        <tr>
+          <td><%= link_to appearance.game.date.strftime('%m/%d'), season_game_path(@season, appearance.game) %></td>
+          <td><%= link_to h(appearance.opponent.abbreviation), appearance.opponent %></td>
+          <td><%= appearance.innings_pitched %></td>
+          <td><%= appearance.runs %></td>
+          <td><%= appearance.hits %></td>
+          <td><%= appearance.walks %></td>
+          <td><%= appearance.strike_outs %></td>
+          <td><%= appearance.home_runs %></td>
+          <td><%=f appearance.era %></td>
+          <td><%=f appearance.whip %></td>
+        </tr>
+      <%- end -%>
+    
+      <tr class="total">
+        <td colspan="2">Total</td>
+        <td><%= @player.innings_pitched %></td>
+        <td><%= @player.runs_allowed %></td>
+        <td><%= @player.hits_allowed %></td>
+        <td><%= @player.walks_allowed %></td>
+        <td><%= @player.ks %></td>
+        <td><%= @player.home_runs_allowed %></td>
+        <td><%=f @player.era %></td>
+        <td><%=f @player.whip %></td>
+      </tr>
+    
+    </table>
+  <%- end -%>
+  
+</div>
+
+
+<div id="Comments">
+  <%= image_tag(@player.avatar.public_filename, :id=>:Avatar) unless @player.avatar.nil? %>
+  
+  <% if logged_in? and @player != current_player -%>
+    <p><%= link_to 'Leave a comment', new_comment_path(:player_id=>@player.id) %></p>
+  <% end -%>
+  
+  <%= content_tag(:h2, 'Comments') if @player.comments.size > 0 %>
+  
+  <% for comment in @player.comments -%>
+    <div class="comment">
+      <%- unless comment.sender.avatar.nil? -%>
+        <div class="avatar">
+          <%= link_to image_tag(comment.sender.avatar.public_filename(:thumb)), comment.sender %>
+          <%= render :partial=>'players/stats', :object=>comment.sender %>
+        </div>
+      <%- end -%>
+      <p>
+        <strong><%= link_to comment.sender.name, comment.sender %></strong><br/>
+        <%= time_ago_in_words comment.created_at %> ago<br/>
+        <%= link_to('Delete', comment, :method=>:delete, :confirm=>'Are you sure?') if is_this_player? %>
+      </p>
+  
+      <%= simple_format comment.body %>
+    </div>
+  <% end -%>
+</div>

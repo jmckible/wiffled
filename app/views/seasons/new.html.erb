@@ -1,0 +1,10 @@
+<h1>Create Season</h1>
+
+<%= error_messages_for :season %>
+
+<% form_for(@season) do |f| %>
+  <%= render :partial=>'form', :object=>f %>
+  <p><%= f.submit "Create" %></p>
+<% end %>
+
+<p><%= link_to 'Back', seasons_path %></p>

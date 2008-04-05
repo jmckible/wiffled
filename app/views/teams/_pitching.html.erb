@@ -1,0 +1,41 @@
+<table>
+  <tr>
+    <th>&nbsp;</th>
+    <th>IP</th>
+    <th>R</th>
+    <th>H</th>
+    <th>BB</th>
+    <th>K</th>
+    <th>HR</th>
+    <th>ERA</th>
+    <th>WHIP</th>
+  </tr>
+  
+  <%- for player in @team.players -%>
+    <%- if player.starts.size > 0 -%>
+      <tr>
+        <td><%= link_to h(player.name), player %></td>
+        <td><%= player.innings_pitched %></td>
+        <td><%= player.runs_allowed %></td>
+        <td><%= player.hits_allowed %></td>
+        <td><%= player.walks_allowed %></td>
+        <td><%= player.ks %></td>
+        <td><%= player.home_runs_allowed %></td>
+        <td><%=f player.era %></td>
+        <td><%=f player.whip %></td>
+      </tr>
+    <%- end -%>
+  <%- end -%>
+  
+  <tr class="total">
+    <td>Total</td>
+    <td><%= @team.innings_pitched %></td>
+    <td><%= @team.runs_allowed %></td>
+    <td><%= @team.hits_allowed %></td>
+    <td><%= @team.walks_allowed %></td>
+    <td><%= @team.ks %></td>
+    <td><%= @team.home_runs_allowed %></td>
+    <td><%=f @team.era %></td>
+    <td><%=f @team.whip %></td>
+  </tr>
+</table>

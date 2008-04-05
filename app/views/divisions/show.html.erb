@@ -1,0 +1,9 @@
+<h1><%=h @division.name %></h1>
+
+<ul>
+  <%- for team in @division.teams -%>
+    <li><%= link_to h(team.name), team_path(team) %></li>
+  <%- end -%>
+</ul>
+
+<p><%= link_to 'Edit', edit_division_path(@division) %> | <%= link_to 'Back', divisions_path %></p>

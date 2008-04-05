@@ -1,0 +1,21 @@
+<%= form.hidden_field :game_id %>
+
+<p>Player<br/><%= form.collection_select :player_id, @league.players, :id, :name %></p>
+
+<p>Team<br/><%= form.collection_select :team_id, @game.teams, :id, :name %></p>
+
+<p>At Bats<br/><%= form.text_field :at_bats %></p>
+
+<p>Singles<br/><%= form.text_field :singles %></p>
+
+<p>Doubles<br/><%= form.text_field :doubles %></p>
+
+<p>Triples<br/><%= form.text_field :triples %></p>
+
+<p>Home Runs<br/><%= form.text_field :home_runs %></p>
+
+<p>Strike Outs<br/><%= form.text_field :strike_outs %></p>
+
+<p>Walks<br/><%= form.text_field :walks %></p>
+
+<p>RBI<br/><%= form.text_field :rbis %></p>

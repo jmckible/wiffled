@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <%= stylesheet_link_tag 'wiffled' %>
+  <%- unless @rss.nil? -%>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= @rss %>"/>
+  <%- end -%>
+  <title><%= @page_title || @league.name %> &laquo; Wiffled</title>
+</head>
+
+<body>  
+  <div id="Header">
+		<div class="fixed_width">
+			<span id="Logo"><%= link_to image_tag('logo.png'), welcome_path %></span>
+			<div id="LoginBox">
+	      <% if logged_in? -%>
+	        <p>Logged in as <strong><%=h current_player.first_name %></strong><br/>
+					<%= link_to 'My Page', player_path(current_player)%> | <%= link_to 'Log out', logout_path %></p>
+	      <% else -%>
+	        <p><strong><%= link_to 'Login', login_path %></strong></p>
+	      <% end -%>
+	    </div>
+		</div>
+  </div>
+  
+	<ul id="Navigation">
+	  <li class="first"><%= link_to 'Forum', forum_path%></li>
+	  <li><%= link_to 'Announcements', announcements_path %></li>
+    <li><%= link_to 'Wiki', 'http://wiki.wiffled.com', :target=>:blank %></li>
+		<li><%= link_to 'Pictures', 'http://flickr.com/groups/wiffled', :target=>:blank %></li>
+    <li><%= link_to 'Players', players_path %></li>
+    <li><%= link_to 'Teams', teams_path %></li>
+    
+    <%- if is_commissioner? -%>
+      <li><%= link_to 'Divisions', divisions_path %></li>
+    <%- end -%>
+    
+    <li><%= link_to 'Games', season_games_path(@season) %></li>
+    <li><%= link_to 'Standings', standings_path %></li>
+    <% unless logged_in? -%>
+      <li class="strong"><%= link_to 'Sign Up', new_player_path %></li>
+    <% end -%>
+  </ul>
+
+	<div id="Content" class="clearfix">
+    <% unless flash[:notice].nil? -%><div id="Flash"><%= flash[:notice] %></div><% end -%>
+    <%= yield %>
+  </div>
+
+	<div id="Footer">
+	  All images and design are © 2007 <%= link_to 'Corkboard, Inc.', 'http://corkboardinc.com' %>
+	</div>
+
+	<%- if ENV['RAILS_ENV'] == 'production' -%>
+		<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			_uacct = "UA-1143202-4";
+			urchinTracker();
+		</script>
+	<%- end -%>
+</body>
+</html>

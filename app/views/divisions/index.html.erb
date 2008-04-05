@@ -1,0 +1,9 @@
+<h1>Divisions</h1>
+
+<p><%= link_to 'New division', new_division_path %></p>
+
+<ul>
+  <% for division in @divisions %>
+    <li><%= link_to h(division.name), division %></li>
+  <% end %>
+</ul>

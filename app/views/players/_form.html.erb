@@ -1,0 +1,16 @@
+<p>First Name <br> <%= form.text_field :first_name %></p>
+<p>Last Name <br> <%= form.text_field :last_name %></p>
+<p>Email <br> <%= form.text_field :email %></p>
+
+<p>Contact (IM/phone/whatever) <br> <%= form.text_field :contact %></p>
+<p>Homepage (include http://)<br> <%= form.text_field :homepage %></p>
+
+<p>Birthday <br/>
+  <%= form.date_select :birthday, :include_blank=>true, :order=>[:month, :day, :year], :start_year=>1940 %></p>
+<p>Hometown <br> <%= form.text_field :hometown %></p>
+  
+<p>Bats <br> <%= form.text_field :bats %></p>
+<p>Throws <br> <%= form.text_field :throws %></p>
+<p>Best Pitches <br> <%= form.text_field :pitches %></p>
+
+<p>About You <br> <%= form.text_area :bio %></p>

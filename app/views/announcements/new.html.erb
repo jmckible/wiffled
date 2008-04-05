@@ -1,0 +1,17 @@
+<div id="Copy">
+  <h1>New Announcement</h1>
+
+  <%= error_messages_for :announcement %>
+  <%= error_messages_for :message %>
+
+  <% tagged_form_for(:announcement, :url => announcements_path) do |f| %>
+    <%= render :partial=>'form', :object=>f %>
+    <p><%= submit_tag "Create" %></p>
+  <% end %>
+
+  <%= link_to 'Back', announcements_path %>
+</div>
+
+<div id="Sidebar">
+  <%= render :partial=>'welcome/markup' %>
+</div>

@@ -1,0 +1,27 @@
+jordan_1:
+  id: 1
+  player_id: 3
+  team_id: 1
+  game_id: 1
+  at_bats: 4
+  singles: 1
+  doubles: 1
+  triples: 0
+  home_runs: 0
+  walks: 1
+  strike_outs: 1
+  rbis: 2
+  
+rob_1:
+  id: 2
+  player_id: 6
+  team_id: 2
+  game_id: 1
+  at_bats: 4
+  singles: 2
+  doubles: 0
+  triples: 0
+  home_runs: 0
+  walks: 0
+  strike_outs: 0
+  rbis: 0

@@ -1,0 +1,12 @@
+<h1>Edit Message</h1>
+
+<%= error_messages_for :message %>
+
+<% form_for(:message, :url => message_path(@message), :html => { :method => :put }) do |f| %>
+  <%= f.text_area :body %>
+  <p><%= submit_tag "Update" %></p>
+<% end %>
+
+<% if @message.topic.class == Announcement -%>
+  <%= link_to 'Back', announcement_path(@message.topic) %>
+<% end -%>

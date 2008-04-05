@@ -1,0 +1,10 @@
+<h1>Edit Season</h1>
+
+<%= error_messages_for :season %>
+
+<% form_for(@season) do |f| %>
+  <%= render :partial=>'form', :object=>f %>
+  <p><%= f.submit "Update" %></p>
+<% end %>
+
+<p><%= link_to 'Show', @season %> | <%= link_to 'All Seasons', seasons_path %></p>

@@ -1,0 +1,9 @@
+granite:
+  id: 1
+  name: Granite
+  league_id: 1
+
+moose:
+  id: 2
+  name: Moose
+  league_id: 1

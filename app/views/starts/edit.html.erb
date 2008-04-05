@@ -1,0 +1,10 @@
+<h1>Editing Start for Game #<%= @start.game.id %> <%= @start.game.date.strftime('%B %e, %Y') %> <%= @start.game %></h1>
+
+<%= error_messages_for :start %>
+
+<% form_for(@start) do |f| %>
+  <%= render :partial=>'form', :object=>f %>
+  <p><%= f.submit "Update" %></p>
+<% end %>
+
+<p><%= link_to 'Delete', @start, :method=>:delete, :confirm=>'Are you sure?' %> | <%= link_to 'Back', season_game_path(@season, @game) %></p>

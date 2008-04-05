@@ -1,0 +1,36 @@
+<%- @page_title = @league_topic.title -%>
+<h1><%=h @league_topic.title %></h1>
+
+<div class="reply"><%= link_to 'Reply', reply_league_topic_path(@league_topic) %> | <%= link_to 'All Topics', league_topics_path %></div>
+
+<div class="will_paginate">
+  <%= will_paginate @messages %>
+</div>
+
+<table class="thread">
+	<%- for message in @messages -%>
+		<tr>
+			<td class="attribution">
+				<p><strong><%= link_to h(message.player.name), player_path(message.player) %></strong></p>
+				<p><%= time_ago_in_words message.created_at %> ago</p>
+				
+				<%- if logged_in? and current_player == message.player -%>
+				  <p><%= link_to 'Edit', edit_message_path(message) %></p>
+				<%- end -%>
+				
+				<%= image_tag(message.player.avatar.public_filename(:thumb), :class=>:pad) unless message.player.avatar.nil? %>
+				
+				<%= render :partial=>'players/stats', :object=>message.player %>				
+			</td>
+		
+			<td class="message"><%= message.body %></td>
+		</tr>
+	<%- end -%>
+</table>
+
+
+<div class="reply"><%= link_to 'Reply', reply_league_topic_path(@league_topic) %> | <%= link_to 'All Topics', league_topics_path %></div>
+
+<div class="will_paginate">
+  <%= will_paginate @messages %>
+</div>

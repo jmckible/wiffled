@@ -1,0 +1,11 @@
+<h1>League Announcements</h1>
+
+<%- if is_commissioner? -%>
+  <p><%= link_to 'New Announcement', new_announcement_path %></p>
+<%- end -%>
+
+<ul class="clean">
+  <% for announcement in @announcements -%>
+    <li><%= announcement.created_at.strftime('%B %e')%> - <%= link_to h(announcement.title), announcement_path(announcement)%></li>
+  <% end -%>
+</ul>

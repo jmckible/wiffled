@@ -1,0 +1,10 @@
+<h1>Editing game</h1>
+
+<%= error_messages_for :game %>
+
+<% form_for :game, :url=>season_game_path(@season, @game), :html=>{:method=>:put} do |f| %>
+  <%= render :partial=>'form', :object=>f %>
+  <p><%= f.submit "Update" %></p>
+<% end %>
+
+<p><%= link_to 'Back', season_game_path(@season, @game) %></p>

@@ -1,0 +1,16 @@
+<% @page_title = 'Log In' %>
+<h1>Log In</h1>
+
+<% form_tag authenticate_path do -%>
+	<p>Email<br/>
+	<%= text_field_tag 'email' %></p>
+
+	<p>Password<br/>
+	<%= password_field_tag 'password' %></p>
+
+	<p><%= submit_tag 'Log in' %></p>
+<% end -%>
+
+<p><%= link_to 'Forgot your password?', forgot_password_path %></p>
+
+<p><%= link_to 'Create an account', new_player_path %></p>

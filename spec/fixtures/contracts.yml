@@ -1,0 +1,15 @@
+mammoth_jordan:
+  id: 1
+  player_id: 3
+  team_id: 1
+  created_at: <%= 1.month.ago.to_s :db %>
+  updated_at: <%= 1.month.ago.to_s :db %>
+  accepted: true
+  
+mammoth_jim:
+  id: 2
+  player_id: 4
+  team_id: 1
+  created_at: <%= 1.month.ago.to_s :db %>
+  updated_at: <%= 1.month.ago.to_s :db %>
+  accepted: null

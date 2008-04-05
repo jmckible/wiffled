@@ -1,0 +1,27 @@
+mammoth_wizards:
+  id: 1
+  season_id: 1
+  date: <%= Date.today.to_s :db %>
+  home_team_id: 1
+  away_team_id: 2
+  home_line_score_id: 1
+  away_line_score_id: 2
+  winning_pitcher_id: 3
+  losing_pitcher_id: 6
+  save_pitcher_id: 5
+  winner_id: 1
+  loser_id: 2
+  
+wizards_mammoth:
+  id: 2
+  season_id: 1
+  date: <%= Date.today.to_s :db %>
+  home_team_id: 2
+  away_team_id: 1
+  home_line_score_id: 3
+  away_line_score_id: 4
+  winning_pitcher_id: 6
+  losing_pitcher_id: 3
+  save_pitcher_id: null
+  winner_id: 2
+  loser_id: 1

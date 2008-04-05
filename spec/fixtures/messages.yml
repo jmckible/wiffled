@@ -1,0 +1,31 @@
+welcome_1:
+  id: 1
+  body: Welcome to the league
+  topic_id: 1
+  player_id: 3
+  created_at: <%= 1.hour.ago.to_s :db %>
+  updated_at: <%= 1.hour.ago.to_s :db %>
+  
+bats_1:
+  id: 2
+  body: what do you use?
+  topic_id: 3
+  player_id: 4
+  created_at: <%= 1.day.ago.to_s :db %>
+  updated_at: <%= 1.day.ago.to_s :db %>
+  
+bats_2:
+  id: 3
+  body: yellow ones
+  topic_id: 3
+  player_id: 3
+  created_at: <%= 12.hours.ago.to_s :db %>
+  updated_at: <%= 12.hours.ago.to_s :db %>
+  
+mammoth_1:
+  id: 4
+  body: pitch jim away
+  topic_id: 2
+  player_id: 3
+  created_at: <%= 12.hours.ago.to_s :db %>
+  updated_at: <%= 12.hours.ago.to_s :db %>

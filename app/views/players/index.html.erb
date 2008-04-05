@@ -1,0 +1,24 @@
+<%- @page_title = 'Players' -%>
+<h1>Players</h1>
+
+<%- for group in @players.in_groups_of(4) -%>
+  <div style="clear:both">
+  <%- for player in group.compact -%>
+    <span class="picture_list">
+      <h3><%= link_to h(player.name), player_path(player)%></h3>
+      <div>
+        <%- unless player.team.nil? -%>
+          <%= link_to h(player.team.name), team_path(player.team) %>
+        <%- else -%>
+          Free Agent
+        <%- end -%>
+      </div>
+      <% if player.avatar.nil? %>
+    	  <div class="no_picture">&nbsp;</div>
+      <%- else -%>
+        <div><%= link_to image_tag(player.avatar.public_filename(:thumb)), player_path(player) %></div>
+      <% end -%>
+    </span>
+  <%- end -%>
+  </div>
+<%- end -%>

@@ -1,0 +1,16 @@
+<%- if is_commissioner? -%>
+	<p>Name <br/>
+	  <%= form.text_field :name %></p>
+
+  <p>Abbreviation <br/>
+    <%= form.text_field :abbreviation %></p>
+
+	<p>Owner <br/>
+	  <%= form.collection_select :owner_id, @league.players, :id, :name %></p>
+	  
+	<p>Division <br/>
+	  <%= form.collection_select :division_id, @league.divisions, :id, :name, :include_blank=>true %></p>
+<%- end -%>
+
+<p>Bio:<br/>
+	<%= form.text_area :bio %></p>

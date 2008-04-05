@@ -1,0 +1,95 @@
+<div id="Copy">
+	<h2>Thanks for a great season!</h2>
+	
+	<p>Welcome to Wiffled, the home of New Hampshire's premiere Wiffle ball league.  We had a great innagrual season in 2007 with eight competitive teams.  The playoffs took place August 25 at Rollins Park in Concord.  Upper Deck faced off against The Deadsox for the Granite Division pennant and continued their undefeated streak.  The Screwdrivers edged out We Got Game in the Moose Division.</p>
+	
+	<p>In the championship game, Upper Deck and The Screwdrivers faced off in a real nail biter.  The Screwdrivers held a lead through five innings and looked to give Upper Deck their first loss of the year.  In dramatic fashion, Kirk Binning took The Screwdrivers' closer Sean Foster deep to force the first extra inning game of the season.  After blowing the save, Sean came back with a home run of his own to lock up the championship for The Screwdrivers.</p>
+	  
+	<p>We'll be back for more Wiffle ball excitement in 2008.  If you'd like to get involved, <%= link_to 'sign up now', new_player_path %>.   If you've got any questions, stop by <%= link_to 'the forum', forum_path %> and we'll help you out.</p>
+
+  <div id="LeaderBoard" class="clearfix">
+  <h2>League Leaders</h2>
+  <div class="leaders clearfix">
+    <div class="profile">
+      <strong>Average</strong>
+      <div class="picture"><%= thumbnail_for @average %></div>
+      <h3><%= link_to h(@average.name), @average %> <%=f @average.average %></h3>
+    </div>
+    
+    <div class="profile">
+      <strong>Home Runs</strong>
+      <div class="picture"><%= thumbnail_for @home_runs %></div>
+      <h3><%= link_to h(@home_runs.name), @home_runs %> <%= @home_runs.home_runs %></h3>
+    </div>
+    
+    <div class="profile">
+      <strong>RBI</strong>
+      <div class="picture"><%= thumbnail_for @rbi %></div>
+      <h3><%= link_to h(@rbi.name), @rbi %> <%= @rbi.rbis %></h3>
+    </div>
+  </div>
+  
+  <div class="leaders clearfix">
+    <div class="profile">
+      <strong>Wins</strong>
+      <div class="picture"><%= thumbnail_for @wins %></div>
+      <h3><%= link_to h(@wins.name), @wins %> <%= @wins.wins %></h3>
+    </div>
+    
+    <div class="profile">
+      <strong>Strike Outs</strong>
+      <div class="picture"><%= thumbnail_for @ks %></div>
+      <h3><%= link_to h(@ks.name), @ks %> <%= @ks.ks %></h3>
+    </div>
+    
+    <div class="profile">
+      <strong>ERA</strong>
+      <div class="picture"><%= thumbnail_for @era %></div>
+      <h3><%= link_to h(@era.name), @era %> <%=f @era.era %></h3>
+    </div>
+  </div>
+  </div>
+
+  <div id="Announcement">
+    <% unless @announcement.nil? -%>
+  	  <h2>From the Desk of the Commissioner</h2>
+  	  <h3><%= link_to h(@announcement.title), announcement_path(@announcement)%></h3>
+  	  <p class="meta"><%= @announcement.created_at.strftime('%B %e, %Y') %></p>
+  	  <%= @announcement.messages.first.body %>
+  	  <%- if @announcement.messages.size > 1 -%>
+  	    <p><%= link_to pluralize(@announcement.messages.size - 1, 'reply'), announcement_path(@announcement) %></p>
+  	  <%- end -%>
+  	  <%- if logged_in? -%>
+  	    <p><%= link_to 'Add a reply', reply_announcement_path(@announcement) %>
+  	  <%- end -%>
+  	<%- end -%>
+	</div>
+</div>
+
+<div id="Sidebar">
+	<iframe src="http://www.flickr.com/slideShow/index.gne?group_id=437516@N22" frameBorder="0" width="300" height="200" scrolling="no" style="margin-bottom: 2em;"></iframe>
+	
+	<%- unless logged_in? -%>
+	  <h1><%= link_to 'Sign Up', new_player_path, :class=>:red %></h1>
+	<%- end -%>
+	
+  <%- for division in @league.divisions -%>
+    <h2><%=h division.name %> Division</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Wins</th>
+        <th>Loses</th>
+      </tr>
+
+      <%- for team in division.teams.sort -%>
+        <tr>
+          <td><%= link_to h(team.name), team %></td>
+          <td><%= team.wins %></td>
+          <td><%= team.loses %></td>
+        </tr>
+      <%- end -%>
+    </table>
+
+  <%- end -%>
+</div>

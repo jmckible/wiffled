@@ -1,0 +1,11 @@
+jordan_1:
+  id: 1
+  game_id: 1
+  player_id: 3
+  team_id: 1
+  outs: 5
+  runs: 1
+  hits: 4
+  walks: 2
+  strike_outs: 2
+  home_runs: 0

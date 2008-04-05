@@ -1,0 +1,116 @@
+<h1><%= @game.away_team.name %> vs. <%= @game.home_team.name %></h1>
+<h3><%= @game.date.strftime('%B %e, %Y') %></h3>
+
+<%- if is_commissioner? -%>
+  <p><%= link_to 'Edit Line Score', edit_season_game_path(@season, @game) %></p>
+  <p><%= link_to 'Add Start', new_start_path(:game_id=>@game.id) %></p>
+  <p><%= link_to 'Add Appearance', new_appearance_path(:game_id=>@game.id) %></p>
+<%- end -%>
+
+<table class="stats">
+  <tr>
+    <th>&nbsp;</th>
+    <%- 1.upto(5) do |i| -%>
+      <th><%= i %></th>
+    <%- end -%>
+    <th class="strong"><strong>Runs</strong></th>
+  </tr>
+  
+  <tr <%= "class=\"highlight\"" if @game.winner == @game.away_team %> >
+    <td><%=link_to h(@game.away_team.name), @game.away_team %></td>
+    <td><%= @game.away_line_score.one %></td>
+    <td><%= @game.away_line_score.two %></td>
+    <td><%= @game.away_line_score.three %></td>
+    <td><%= @game.away_line_score.four %></td>
+    <td><%= @game.away_line_score.five %></td>
+    <td class="strong"><%= @game.away_score %></td>
+  </tr>
+  
+  <tr <%= "class=\"highlight\"" if @game.winner == @game.home_team %> >
+    <td><%= link_to h(@game.home_team.name), @game.home_team %></td>
+    <td><%= @game.home_line_score.one %></td>
+    <td><%= @game.home_line_score.two %></td>
+    <td><%= @game.home_line_score.three %></td>
+    <td><%= @game.home_line_score.four %></td>
+    <td><%= @game.home_line_score.five %></td>
+    <td class="strong"><%= @game.home_score %></td>
+  </tr>
+  
+</table>
+
+<p><%= ifm 'Win', @game.winning_pitcher, :name %></p>
+<p><%= ifm 'Loss', @game.losing_pitcher, :name %></p>
+<p><%= ifm 'Save', @game.save_pitcher, :name %></p>
+
+<%- for team in @game.teams -%>
+  <%- if @game.starts.for(team).size > 0 || @game.appearances.for(team).size > 0 -%>
+    <h2><%=h team.name %></h2>
+  <%- end -%>
+  
+  <%- if @game.starts.for(team).size > 0 -%>
+    <table class="stats">
+      <tr>
+        <th>&nbsp;</th>
+        <th>At Bats</th>
+        <th>Singles</th>
+        <th>Doubles</th>
+        <th>Triples</th>
+        <th>Home Runs</th>
+        <th>Walks</th>
+        <th>Strike Outs</th>
+        <th>RBI</th>
+      </tr>
+
+      <%- for start in @game.starts.for(team) -%>
+        <tr>
+          <td><%= link_to h(start.player.name), start.player %></td>
+          <td><%= start.at_bats %></td>
+          <td><%= start.singles %></td>
+          <td><%= start.doubles %></td>
+          <td><%= start.triples %></td>
+          <td><%= start.home_runs %></td>
+          <td><%= start.walks %></td>
+          <td><%= start.strike_outs %></td>
+          <td><%= start.rbis %></td>
+          <%- if is_commissioner? -%>
+            <td><%= link_to 'Edit', edit_start_path(start) %></td>
+          <%- end -%>
+        </tr>
+      <%- end -%>
+    </table>
+  <%- end -%>
+  
+  
+  <%- if @game.appearances.for(team).size > 0 -%>
+    <table class="stats">
+      <tr>
+        <th>&nbsp;</th>
+        <th>IP</th>
+        <th>Runs</th>
+        <th>Hits</th>
+        <th>Walks</th>
+        <th>Strike Outs</th>
+        <th>Home Runs</th>
+        <th>ERA</th>
+      </tr>
+      
+      <%- for appearance in @game.appearances.for(team) -%>
+        <tr>
+          <td><%= link_to h(appearance.player.name), appearance.player %></td>
+          <td><%= appearance.innings_pitched %></td>
+          <td><%= appearance.runs %></td>
+          <td><%= appearance.hits %></td>
+          <td><%= appearance.walks %></td>
+          <td><%= appearance.strike_outs %></td>
+          <td><%= appearance.home_runs %></td>
+          <td><%=f appearance.era %></td>
+          <%- if is_commissioner? -%>
+            <td><%= link_to 'Edit', edit_appearance_path(appearance) %></td>
+          <%- end -%>
+        </tr>
+      <%- end -%>
+    </table>
+  <%- end -%>
+  
+<%- end -%>
+<p><%= link_to 'Back', season_games_path(@season) %></p>

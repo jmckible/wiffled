@@ -1,0 +1,12 @@
+<h1>Contract Offer</h1>
+
+<%= error_messages_for :contract %>
+
+<% form_for(:contract, :url => contract_path(@contract), :html => { :method => :put }) do |f| %>
+  <p>You've been offered a contract to play with <%= link_to h(@contract.team.name), team_path(@contract.team) %>.  Would you like to accept?</p>
+
+	<p><%= submit_tag "Accept" %></p>
+	<p><%= submit_tag "Decline" %>
+<% end %>
+
+<p><%= link_to 'Back', player_path(@contract.player) %></p>

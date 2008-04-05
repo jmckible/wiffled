@@ -1,0 +1,33 @@
+jordan:
+  id: 1
+  type: Avatar
+  parent_id:
+  content_type: image/pjpeg
+  filename: jordan.jpg
+  thumbnail: null
+  size: 10000
+  width: 400
+  height: 300
+  
+jordan_thumbnail:
+  id: 2
+  type: null
+  parent_id: 1
+  content_type: image/pjpeg
+  filename: jordan.jpg
+  thumbnail: thumb
+  size: 5000
+  width: 100
+  height: 75
+  
+mammoth:
+  id: 3
+  type: Logo
+  parent_id:
+  content_type: image/pjpeg
+  filename: mammoth.jpg
+  thumbnail: null
+  size: 10000
+  width: 400
+  height: 300
+  

@@ -1,0 +1,17 @@
+mammoth:
+  id: 1
+  name: Mammoth
+  league_id: 1
+  owner_id: 3
+  logo_id: 3
+  abbreviation: MAM
+  division_id: 1
+  
+wizards:
+  id: 2
+  name: Wizards of Wiffle
+  league_id: 1
+  owner_id: 6
+  logo_id: null
+  abbreviation: WOW
+  division_id: 2
